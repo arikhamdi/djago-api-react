@@ -84,7 +84,7 @@ class PermissionAPIView(APIView):
 
 class RoleViewSet(viewsets.ViewSet):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated & ViewPermissions]
+    permission_classes = [IsAuthenticated]
     Permission_object = 'roles'
 
     def list(self, request):
@@ -129,7 +129,7 @@ class RoleViewSet(viewsets.ViewSet):
 
 class UserGenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated & ViewPermissions]
+    permission_classes = [IsAuthenticated]
     Permission_object = 'users'
     queryset = User.objects.all()
     serializer_class = UserSerializer

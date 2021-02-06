@@ -7,3 +7,13 @@ db.sqlite3
 db.sqlite3-journal
 media
 .dbdata
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
