@@ -12,6 +12,8 @@ from .models import Product
 from .serializers import ProductSerializer
 from admin.pagination import CustomPagination
 
+from django.conf import settings
+
 
 class ProductGenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
     authentication_classes = [JWTAuthentication]
@@ -53,5 +55,5 @@ class FileUploadView(APIView):
         url = default_storage.url(file_name)
 
         return Response({
-            'url': url
+            'url': "http://" + request.get_host() + url
         })
